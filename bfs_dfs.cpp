@@ -97,15 +97,32 @@ void clear(vector<bool>& visited) {
 }
 
 int main() {
-    vector<vector<int>> adjList = {
-        {1,3,4},
-        {2},
-        { },
-        {2},
-        {5},
-        {3}
-    };
+    // static input 
+    // vector<vector<int>> adjList = {
+    //     {1,3,4},
+    //     {2},
+    //     { },
+    //     {2},
+    //     {5},
+    //     {3}
+    // };
 
+    // dynamic input
+    int n, e;
+    cout<<"Enter number of nodes: ";
+    cin>>n;
+    vector<vector<int>> adjList(n);
+    cout<<"Enter number of edges: ";
+    cin>>e;
+    for(int i=0; i<e; i++)
+    {
+        int src, dst;
+        cout<<"Enter the src dst of edge no. "<<i+1<<": ";
+        cin>>src>>dst;
+        adjList[src].push_back(dst);
+        adjList[dst].push_back(src);
+    }
+        
     vector<bool> visited(adjList.size(), false);
     int src = 0;
 
